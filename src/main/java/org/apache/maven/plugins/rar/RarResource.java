@@ -18,7 +18,7 @@
  */
 package org.apache.maven.plugins.rar;
 
-import org.apache.maven.model.Resource;
+import org.apache.maven.shared.filtering.Resource;
 
 /**
  * @author Olivier Lamy

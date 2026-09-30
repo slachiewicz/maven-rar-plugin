@@ -16,17 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.maven.plugins.rar.stubs;
+package org.apache.maven.plugins.rar;
 
-import org.apache.maven.artifact.handler.DefaultArtifactHandler;
+import org.apache.maven.api.di.Named;
+import org.apache.maven.api.di.Provides;
+import org.sonatype.plexus.build.incremental.BuildContext;
+import org.sonatype.plexus.build.incremental.ThreadBuildContext;
 
-public class ArtifactHandlerStub extends DefaultArtifactHandler {
+/**
+ * Supplies the {@link BuildContext} which the {@code maven-filtering} components require.
+ */
+@Named
+class Providers {
 
-    public ArtifactHandlerStub() {
-        super("jar");
-    }
-
-    public boolean isAddedToClasspath() {
-        return true;
+    @Provides
+    static BuildContext buildContext() {
+        return new ThreadBuildContext();
     }
 }
